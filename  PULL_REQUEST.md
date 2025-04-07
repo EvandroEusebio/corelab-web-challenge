@@ -30,4 +30,5 @@ Durante a implementação, enfrentei alguns desafios técnicos e de UI. Um dos d
 
 Outro ponto desafiador foi garantir a ordenação das tarefas, priorizando os **favoritos no topo da lista**, mesmo após operações de atualização ou exclusão. Isso foi resolvido com lógica eficiente tanto no frontend quanto no backend, mantendo a fluidez da interface.
 
+![Interface do Sistema](./Screen.png)
 
