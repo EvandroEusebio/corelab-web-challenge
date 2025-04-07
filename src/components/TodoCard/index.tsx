@@ -6,11 +6,13 @@ import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
 import deleteTodoList from "@/service/routesAPI/todoList/delete";
 import editTodoList from "@/service/routesAPI/todoList/edit";
 import { TodoListInterface } from "@/types/todo_list_type";
-import { useState } from "react";
+import { useState, ChangeEvent, ComponentProps } from "react";
 import { toast } from "sonner";
 import PaletteColor from "../PaletteColor";
 import { Textarea } from "../ui/textarea";
 import { Toggle } from "../ui/toggle";
+import useTodoListStore from "@/features/store/todoListStore";
+
 
 export function TodoCard({
   id,
@@ -18,11 +20,13 @@ export function TodoCard({
   color,
   notes,
   favorited,
+  className
 }: TodoListInterface) {
   const [isFavorite, setIsFavorite] = useState(favorited);
   const [colorCard, setColorCard] = useState(color);
   const [enableNoteEdit, setEnableNoteEdit] = useState(true);
   const [newNote, setNewNote] = useState(notes);
+  const { deleteNote, todoList } = useTodoListStore();
 
   // Editar a cor da lista de tarefas
   const handleEditColorTodoList = async (color: string) => {
@@ -67,7 +71,8 @@ export function TodoCard({
       .then((response) => {
         console.log("Tarefa deletada:", response.statusText);
         toast.success("Tarefa deletada com sucesso!");
-        window.location.reload();
+        deleteNote(id);
+        //window.location.reload();
       })
       .catch((error) => {
         console.error("Erro ao deletar a tarefa:", error);
@@ -113,7 +118,7 @@ export function TodoCard({
 
   return (
     <Card
-      className={`w-full max-w-96 rounded-[25px] py-4 shadow-none border-none`}
+      className={`w-full max-w-96 rounded-[25px] py-4 shadow-none border-none ${className}`}
       style={{ backgroundColor: colorCard }}
     >
       <div className="flex items-center border-b-1 pb-4 px-4 justify-between">

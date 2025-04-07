@@ -11,6 +11,7 @@ import { Button } from "../ui/button";
 import { Form, FormControl, FormField, FormItem } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import useTodoListStore from "@/features/store/todoListStore";
 
 // Definir o esquema de validação com Zod
 const taskSchema = z.object({
@@ -24,8 +25,9 @@ type TaskFormType = z.infer<typeof taskSchema>;
 function TodoInput() {
   const [isFavorite, setIfavorite] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { setTodoList, todoList } = useTodoListStore();
 
-  // Configurar o React Hook Form com Zod
+  // Configuração do React Hook Form com Zod
   const todoForm = useForm<z.infer<typeof taskSchema>>({
     resolver: zodResolver(taskSchema),
     defaultValues: {
@@ -56,14 +58,15 @@ function TodoInput() {
     setLoading(true);
     createTodoList(data)
       .then((response) => {
-        console.log(response.statusText);
-        toast.success("Lista de tarefa criada com sucesso!");
+        console.log(response.data.list);
+        toast.success("Nota criada com sucesso!");
         window.history.replaceState(null, "", "/"); // limpar parametros de url
-        window.location.reload();
+        setTodoList([response.data.list, ...todoList]);
+        todoForm.reset(); // limpar os campos do formulário
       })
       .catch((error) => {
-        console.error("Erro ao criar a lista de tarefas:", error);
-        toast.error("Erro ao criar a lista de tarefas");
+        console.error("Erro ao criar a Nota:", error);
+        toast.error("Erro ao criar a Nota");
       })
       .finally(() => {
         setLoading(false);

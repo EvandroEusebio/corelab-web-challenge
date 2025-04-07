@@ -32,6 +32,7 @@ function SectionFavorite() {
                     color={list.color}
                     notes={list.notes}
                     favorited={list.favorited}
+                    className="shadow-sm"
                   />
                 ))
               ) : (

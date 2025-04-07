@@ -12,6 +12,13 @@ Para o gerenciamento de estado global, utilizei **Zustand**, uma biblioteca leve
 
 Outro destaque do frontend foi a atenção à **tipagem rigorosa com TypeScript**. Todas as interfaces e tipos foram definidos com clareza, o que contribuiu diretamente para a robustez da aplicação e facilitou o desenvolvimento colaborativo e a manutenção futura.
 
+
+### 🦴 Skeletons de Carregamento
+
+Para melhorar a experiência do usuário durante a carga dos dados, Eu adicionei um **sistema de skeletons (esqueletos de carregamento)** nos cards das tarefas. Isso garante um feedback visual imediato ao usuário enquanto as informações são carregadas da API, evitando a sensação de lentidão ou tela vazia.
+
+Esses skeletons foram desenvolvidos utilizando os componentes do **Shadcn**, com animação sutil e estilização integrada ao tema visual da aplicação. Essa funcionalidade melhora a percepção de performance e dá um ar mais profissional à aplicação.
+
 ## 🔧 Backend
 
 No lado do servidor, optei por utilizar **Node.js** com o framework **AdonisJS (TypeScript)** por oferecer uma estrutura robusta e com forte adoção do padrão MVC. Essa escolha garantiu organização no código, facilidade de manutenção e integração simplificada com banco de dados e serviços auxiliares.
