@@ -37,8 +37,8 @@ function PaletteColor({ onChangeColorCard }: PaletteColorProps) {
             <div
               key={color}
               className="w-9 h-9 rounded-full cursor-pointer"
-              style={{ backgroundColor: color }}
-              onClick={() => onChangeColorCard(color)}
+              style={{ backgroundColor: `#${color}` }}
+              onClick={() => onChangeColorCard(`#${color}`)}
               aria-label={`Selecionar cor ${color}`} 
             />
           ))}

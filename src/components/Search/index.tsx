@@ -16,7 +16,7 @@ function Search({ className }: ComponentProps<"search">) {
 
   // função para lidar com a pesquisa
   const handleSearch = () => {
-    if (inputValue) return router.push(`/?q=${inputValue}`);
+    if (inputValue) return router.push(`/?title=${inputValue}`);
 
     if (!inputValue) return router.push("/");
   };

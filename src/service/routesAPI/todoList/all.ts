@@ -1,7 +1,7 @@
 import axiosInstance from "@/service/api";
 
-const getTodoLists = (query = "") => {
-    return axiosInstance.get(`/api/todo/?q=${query}`);
-}
+const getTodoLists = (title = "", color = "") => {
+  return axiosInstance.get(`/api/todo/?title=${title}&color=${color}`);
+};
 
 export default getTodoLists;

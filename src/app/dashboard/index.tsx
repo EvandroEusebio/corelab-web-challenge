@@ -12,12 +12,15 @@ export default function Home() {
   const searchParams = useSearchParams();
   const { setTodoList, setLoading } = useTodoListStore();
 
-  // obter o valor da query string
-  const searchQuery = searchParams?.get("q") ?? "";
+  // obter valores da query string
+  const searchTitle = searchParams.get("title") ?? "";
+  const searchColor = searchParams.get("color") ?? "";
+
+  console.log("searchColor", searchColor);
 
   useEffect(() => {
     setLoading(true);
-    getTodoLists(searchQuery)
+    getTodoLists(searchTitle, searchColor)
       .then((response) => {
         //console.log("Listas de Tarefas:", response.data.lists);
         setTodoList(response.data.lists);
@@ -28,7 +31,7 @@ export default function Home() {
       .finally(() => {
         setLoading(false);
       });
-  }, [searchQuery]);
+  }, [searchTitle, searchColor]);
 
   return (
     <div className="min-h-screen pt-8 pb-20 space-y-8 font-[family-name:var(--font-geist-sans)] lg:px-20 px-8">
