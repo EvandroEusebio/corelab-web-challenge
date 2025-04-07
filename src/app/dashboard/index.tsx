@@ -6,6 +6,7 @@ import getTodoLists from "@/service/routesAPI/todoList/all";
 import { useEffect } from "react";
 import SectionFavorite from "./_components/SectionFavorite";
 import { useSearchParams } from "next/navigation";
+import { ColorFilter } from "@/components/ColorFilter";
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -30,9 +31,12 @@ export default function Home() {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-screen pt-8 pb-20 space-y-8 font-[family-name:var(--font-geist-sans)] lg:px-20 px-4">
+    <div className="min-h-screen pt-8 pb-20 space-y-8 font-[family-name:var(--font-geist-sans)] lg:px-20 px-8">
       <div className="flex justify-center">
         <TodoInput />
+      </div>
+      <div className="flex sm:justify-end justify-center max-w-screen-xl mx-auto">
+        <ColorFilter />
       </div>
       <SectionFavorite />
       <SectionOther />

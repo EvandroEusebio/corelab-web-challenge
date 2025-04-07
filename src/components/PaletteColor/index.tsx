@@ -6,23 +6,9 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Toggle } from "@/components/ui/toggle";
+import { dataColor } from "@/constants/dataColor";
 import { useState } from "react";
 
-// Array de opções de cor
-const colorOptions = [
-  "#ffffff",
-  "#BAE2FF",
-  "#B9FFDD",
-  "#FFE8AC",
-  "#FFCAB9",
-  "#F99494",
-  "#ECA1FF",
-  "#DAFF8B",
-  "#FFA285",
-  "#CDCDCD",
-  "#979797",
-  "#A99A7C",
-];
 
 interface PaletteColorProps {
   onChangeColorCard: (color: string) => void;
@@ -47,7 +33,7 @@ function PaletteColor({ onChangeColorCard }: PaletteColorProps) {
       </PopoverTrigger>
       <PopoverContent side="bottom" align="start" className="w-64 sm:w-lg">
         <div className="flex gap-2 flex-wrap justify-start">
-          {colorOptions.map((color) => (
+          {dataColor.map((color) => (
             <div
               key={color}
               className="w-9 h-9 rounded-full cursor-pointer"

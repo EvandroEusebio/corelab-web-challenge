@@ -123,7 +123,7 @@ export function TodoCard({
 
   return (
     <Card
-      className={`w-full max-w-96 rounded-[25px] py-4 shadow-none border-none ${className}`}
+      className={`w-full  rounded-[25px] py-4 shadow-none border-none ${className}`}
       style={{ backgroundColor: colorCard }}
     >
       <div className="flex items-center border-b-1 pb-4 px-4 justify-between">

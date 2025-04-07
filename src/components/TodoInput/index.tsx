@@ -77,7 +77,7 @@ function TodoInput() {
     <Form {...todoForm}>
       <form
         onSubmit={todoForm.handleSubmit(onSubmit)}
-        className="w-full max-w-96 bg-white rounded-[25px] sm:rounded-[3px] border-1 border-[#D9D9D9] shadow-md shadow-[#95959540]"
+        className="w-full sm:max-w-96 max-w-full bg-white rounded-[25px] sm:rounded-[3px] border-1 border-[#D9D9D9] shadow-md shadow-[#95959540]"
       >
         <div className="flex py-1 px-4 items-center gap-2 border-b-1 justify-between border-[#D9D9D9]">
           <FormField
