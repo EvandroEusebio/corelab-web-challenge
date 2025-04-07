@@ -3,16 +3,21 @@ import PencilIcon from "@/assets/icons/pencilIcon";
 import StarIcon from "@/assets/icons/starIcon";
 import XIcon from "@/assets/icons/xIcon";
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
+import useTodoListStore from "@/features/store/todoListStore";
 import deleteTodoList from "@/service/routesAPI/todoList/delete";
 import editTodoList from "@/service/routesAPI/todoList/edit";
 import { TodoListInterface } from "@/types/todo_list_type";
-import { useState, ChangeEvent, ComponentProps } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import PaletteColor from "../PaletteColor";
 import { Textarea } from "../ui/textarea";
 import { Toggle } from "../ui/toggle";
-import useTodoListStore from "@/features/store/todoListStore";
-
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export function TodoCard({
   id,
@@ -20,7 +25,7 @@ export function TodoCard({
   color,
   notes,
   favorited,
-  className
+  className,
 }: TodoListInterface) {
   const [isFavorite, setIsFavorite] = useState(favorited);
   const [colorCard, setColorCard] = useState(color);
@@ -125,11 +130,20 @@ export function TodoCard({
         <CardTitle className="font-bold text-[14px] text-[#4F4F4D]">
           {title}
         </CardTitle>
-        <StarIcon
-          className="w-4 h-4 cursor-pointer"
-          onClick={handleFavorite}
-          color={isFavorite ? "#FFA000" : "rgba(255, 255, 255, 0.0)"}
-        />
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <StarIcon
+                className="w-4 h-4 cursor-pointer"
+                onClick={handleFavorite}
+                color={isFavorite ? "#FFA000" : "rgba(255, 255, 255, 0.0)"}
+              />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Adicionar aos favoritos</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
 
       <CardContent className="h-80 font-normal px-4 text-[13px]">
@@ -142,24 +156,53 @@ export function TodoCard({
       </CardContent>
       <CardFooter className="flex justify-between">
         <div className="flex gap-3 items-center">
-          <Toggle
-            onClick={handleToggleEditNoteChange}
-            className={`cursor-pointer hover:bg-[#ffe3b388] rounded-full 
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Toggle
+                  onClick={handleToggleEditNoteChange}
+                  className={`cursor-pointer hover:bg-[#ffe3b388] rounded-full 
             ${
               enableNoteEdit ? "bg-transparent" : "data-[state=on]:bg-[#FFE3B3]"
             } 
             transition-colors duration-300 ease-in-out`}
-          >
-            <PencilIcon className="w-4 h-4 cursor-pointer" />
-          </Toggle>
+                >
+                  <PencilIcon className="w-4 h-4 cursor-pointer" />
+                </Toggle>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Editar a nota</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
 
-          <PaletteColor onChangeColorCard={handleEditColorTodoList} />
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div>
+                  <PaletteColor onChangeColorCard={handleEditColorTodoList} />
+                </div>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Mudar a cor</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
-        <XIcon
-          className="w-[13px] h-[13px] cursor-pointer"
-          color="#9E9E9E"
-          onClick={() => handleDeleteTask()}
-        />
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <XIcon
+                className="w-[13px] h-[13px] cursor-pointer"
+                color="#9E9E9E"
+                onClick={() => handleDeleteTask()}
+              />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Deletar nota</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </CardFooter>
     </Card>
   );
