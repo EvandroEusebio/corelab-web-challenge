@@ -13,8 +13,8 @@ Gerencie suas tarefas de forma simples e eficiente com este sistema. Este projet
 - Interface limpa e responsiva
 - Criação, leitura, atualização e exclusão de tarefas.
 - Favoritos.
-- Personalização de cores das tarefas.
-- Filtragem por Titulo e core das tarefas.
+- Personalização de cores das Notas.
+- Filtragem por Titulo e cor das tarefas.
 
 
 ## 🛠️ **Tecnologias Utilizadas**

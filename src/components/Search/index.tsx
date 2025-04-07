@@ -8,7 +8,7 @@ function Search({ className }: ComponentProps<"search">) {
   const router = useRouter();
   const [inputValue, setValue] = useState("");
 
-  // lidar com a mudança de valor do input
+  // função para lidar com a mudança de valor do input
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     setValue(inputValue);
@@ -31,7 +31,7 @@ function Search({ className }: ComponentProps<"search">) {
       className={`flex items-center gap-2 px-3 border-1 border-gray-300  ${className}`}
     >
       <Input
-        placeholder="Pesquisar notas por (titulo ou cor (ex: FF0000))"
+        placeholder="Pesquisar notas por (titulo)"
         type="text"
         value={inputValue ?? ""}
         onChange={handleChange}
